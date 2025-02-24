@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Book Us - Old Tashkent Hotel & SPA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #007AFF;
+            color: white;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            width: 90%;
+            max-width: 400px;
+            height: 95vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .header {
+            background-color: white;
+            color: #007AFF;
+            font-weight: bold;
+            font-size: 5vw;
+            padding: 12px;
+            border-radius: 15px;
+            text-align: center;
+            position: fixed;
+            top: 10px;
+            width: 90%;
+            max-width: 400px;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .content-container {
+            flex: 1;
+            overflow-y: auto;
+            background-color: #007AFF;
+            border-radius: 15px;
+            padding-top: 40px;
+            padding-bottom: 60px;
+        }
+        .booking-section {
+            padding: 15px;
+            text-align: center;
+        }
+        .booking-section h2 {
+            color: white;
+            font-size: 5vw;
+            margin-bottom: 20px;
+        }
+        .booking-section p {
+            font-size: 3.5vw;
+            line-height: 1.4;
+            color: white;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .booking-card {
+            background: linear-gradient(135deg, #007AFF, #005FCC);
+            border-radius: 15px;
+            padding: 15px;
+            margin: 10px 0;
+            box-shadow: 0 0 10px rgba(0, 122, 255, 0.8);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .booking-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 122, 255, 0.8);
+        }
+        .booking-card img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
+        }
+        .booking-card a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 4vw;
+            display: block;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #007AFF;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        .booking-card a:hover {
+            background-color: #005FCC;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .contact-info {
+            margin-top: 20px;
+        }
+        .contact-info div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 3.5vw;
+            margin-bottom: 10px;
+        }
+        .contact-info div i {
+            font-size: 4vw;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            background-color: white;
+            padding: 10px;
+            border-radius: 15px;
+            position: fixed;
+            bottom: 10px;
+            width: 90%;
+            max-width: 400px;
+            z-index: 1000;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .navbar a {
+            text-decoration: none;
+            color: #007AFF;
+            font-weight: bold;
+            padding: 10px 3vw;
+            border-radius: 10px;
+            transition: 0.3s;
+            font-size: 4vw;
+            text-shadow: 0 0 5px rgba(0, 122, 255, 0.8);
+        }
+        .navbar a:hover {
+            background-color: #007AFF;
+            color: white;
+            box-shadow: 0 0 10px rgba(0, 122, 255, 0.8);
+        }
+        @media (max-width: 600px) {
+            .container {
+                width: 95%;
+                max-width: 95%;
+            }
+            .header {
+                font-size: 6vw;
+                padding: 10px;
+                width: 95%;
+                max-width: 95%;
+            }
+            .booking-section h2 {
+                font-size: 6vw;
+            }
+            .booking-section p {
+                font-size: 4vw;
+            }
+            .booking-card img {
+                width: 60px;
+                height: 60px;
+            }
+            .booking-card a {
+                font-size: 4.5vw;
+            }
+            .contact-info div {
+                font-size: 4vw;
+            }
+            .navbar {
+                width: 95%;
+                max-width: 95%;
+            }
+            .navbar a {
+                font-size: 4vw;
+                padding: 8px 2vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">Old Tashkent Hotel & SPA</div>
+        <div class="content-container">
+            <div class="booking-section">
+                <h2>BOOK US</h2>
+                <p>Book your stay at Old Tashkent Hotel & SPA. Choose one of the options below:</p>
+                <div class="booking-card">
+                    <img src="boooking.png" alt="Booking.com Logo">
+                    <a href="https://www.expedia.com/Tashkent-Hotels-OLD-Tashkent-HotelSpa.h96758046.Hotel-Information?chkin=2025-03-09&chkout=2025-03-10&x_pwa=1&rfrr=HSR&pwa_ts=1740354058879&referrerUrl=aHR0cHM6Ly93d3cuZXhwZWRpYS5jb20vSG90ZWwtU2VhcmNo&useRewards=false&rm1=a2&regionId=3368&destination=Tashkent%2C%20Uzbekistan&destType=MARKET&neighborhoodId=763293182926880768&selected=96758046&latLong=41.299496%2C69.240074&hotelName=OLD%20Tashkent%20Hotel%26Spa&sort=RECOMMENDED&top_dp=51&top_cur=USD&gclid=Cj0KCQiAq-u9BhCjARIsANLj-s0kCyNJiQ-IW8J55w2dAY28nceveLYTiPiPgwdKgnMBa5Uhl3e-OKgaAqyUEALw_wcB&semcid=US.UB.GOOGLE.DT-c-EN.HOTEL&semdtl=a114081199281.b1122171194221.g1kwd-11586141.e1c.m1Cj0KCQiAq-u9BhCjARIsANLj-s0kCyNJiQ-IW8J55w2dAY28nceveLYTiPiPgwdKgnMBa5Uhl3e-OKgaAqyUEALw_wcB.r13ad14aca33d274c9bc63994ad82afd351683d15f776be5cc81082951f81c9783.c1.j19207756.k19207756.d1720034729891.h1b.i1.l1.n1.o1.p1.q1.s1.t1.x1.f1.u1.v1.w1&userIntent=&selectedRoomType=322881084&selectedRatePlan=393282560&searchId=56e0d5d2-afb0-44ef-b91d-5dba3f67be54" target="_blank">
+                        Book on Booking.com
+                    </a>
+                </div>
+                <div class="booking-card">
+                    <img src="expedia.png" alt="Expedia Logo">
+                    <a href="https://www.expedia.com" target="_blank">
+                        Book on Expedia
+                    </a>
+                </div>
+                <div class="booking-card">
+                    <img src="mybooking.png" alt="MyBookings Logo">
+                    <a href="https://www.mybookings.com" target="_blank">
+                        Book on MyBookings
+                    </a>
+                </div>
+                <div class="contact-info">
+                    <p>Or contact us directly:</p>
+                    <div>
+                        <i class="fas fa-phone"></i>
+                        <span>+998 71 123 4567</span>
+                    </div>
+                    <div>
+                        <i class="fas fa-envelope"></i>
+                        <span>info@oldtashkenthotel.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navbar">
+            <a href="main.html">ABOUT</a>
+            <a href="services.html">SERVICES</a>
+<!--            <a href="bookus.html">BOOK US</a>-->
+            <a href="advice.html">ADVICES</a>
+        </div>
+    </div>
+</body>
+</html>

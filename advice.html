@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Advice - Old Tashkent Hotel & SPA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #007AFF;
+            color: white;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        .container {
+            width: 90%;
+            max-width: 400px;
+            height: 95vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        .header {
+            background-color: white;
+            color: #007AFF;
+            font-weight: bold;
+            font-size: 5vw;
+            padding: 12px;
+            border-radius: 15px;
+            text-align: center;
+            position: fixed;
+            top: 10px;
+            width: 90%;
+            max-width: 400px;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .coming-soon {
+            font-size: 6vw;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            animation: glow 2s infinite alternate;
+            position: relative;
+            z-index: 2;
+        }
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); }
+            100% { text-shadow: 0 0 20px rgba(255, 255, 255, 1); }
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            background-color: white;
+            padding: 10px;
+            border-radius: 15px;
+            position: fixed;
+            bottom: 10px;
+            width: 90%;
+            max-width: 400px;
+            z-index: 1000;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .navbar a {
+            text-decoration: none;
+            color: #007AFF;
+            font-weight: bold;
+            padding: 10px 3vw;
+            border-radius: 10px;
+            transition: 0.3s;
+            font-size: 4vw;
+            text-shadow: 0 0 5px rgba(0, 122, 255, 0.8);
+        }
+        .navbar a:hover {
+            background-color: #007AFF;
+            color: white;
+            box-shadow: 0 0 10px rgba(0, 122, 255, 0.8);
+        }
+
+        /* Animated Lines */
+        .line {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.2);
+            animation: moveLine 5s linear infinite;
+            z-index: 1;
+        }
+        @keyframes moveLine {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100vh); }
+        }
+
+        /* Floating Particles */
+        .particle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: float 5s infinite ease-in-out;
+            z-index: 1;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Background Animation */
+        @keyframes backgroundAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        body {
+            background: linear-gradient(-45deg, #007AFF, #005FCC, #003366, #001933);
+            background-size: 400% 400%;
+            animation: backgroundAnimation 10s ease infinite;
+        }
+
+        @media (max-width: 600px) {
+            .header {
+                font-size: 6vw;
+                padding: 10px;
+                width: 95%;
+                max-width: 95%;
+            }
+            .coming-soon {
+                font-size: 8vw;
+            }
+            .navbar {
+                width: 95%;
+                max-width: 95%;
+            }
+            .navbar a {
+                font-size: 4vw;
+                padding: 8px 2vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Lines -->
+    <div class="line" style="left: 10%; width: 2px; height: 100px; animation-delay: 0s;"></div>
+    <div class="line" style="left: 30%; width: 2px; height: 150px; animation-delay: 2s;"></div>
+    <div class="line" style="left: 50%; width: 2px; height: 200px; animation-delay: 4s;"></div>
+    <div class="line" style="left: 70%; width: 2px; height: 100px; animation-delay: 1s;"></div>
+    <div class="line" style="left: 90%; width: 2px; height: 150px; animation-delay: 3s;"></div>
+
+    <!-- Floating Particles -->
+    <div class="particle" style="top: 10%; left: 20%; animation-delay: 0s;"></div>
+    <div class="particle" style="top: 30%; left: 50%; animation-delay: 2s;"></div>
+    <div class="particle" style="top: 50%; left: 80%; animation-delay: 4s;"></div>
+    <div class="particle" style="top: 70%; left: 10%; animation-delay: 1s;"></div>
+    <div class="particle" style="top: 90%; left: 40%; animation-delay: 3s;"></div>
+
+    <div class="container">
+        <div class="header">Old Tashkent Hotel & SPA</div>
+        <div class="coming-soon">Coming Soon...</div>
+        <div class="navbar">
+            <a href="main.html">ABOUT</a>
+            <a href="services.html">SERVICES</a>
+<!--            <a href="bookus.html">BOOK US</a>-->
+            <a href="advice.html">ADVICES</a>
+        </div>
+    </div>
+</body>
+</html>

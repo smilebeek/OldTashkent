@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Services - Old Tashkent Hotel & SPA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #007AFF;
+            --secondary-color: white;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            width: 90%;
+            max-width: 400px;
+            height: 95vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .header {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 5vw;
+            padding: 12px;
+            border-radius: 15px;
+            text-align: center;
+            position: fixed;
+            top: 10px;
+            width: 90%;
+            max-width: 400px;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            position: fixed;
+            top: 65px;
+            width: 90%;
+            max-width: 400px;
+            z-index: 1000;
+            background-color: var(--primary-color);
+            padding: 8px 0;
+            border-radius: 15px;
+        }
+        .tab {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 3.5vw;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .tab.active {
+            background-color: #005FCC;
+            color: var(--secondary-color);
+        }
+        .content-container {
+            flex: 1;
+            overflow-y: auto;
+            padding-top: 100px;
+            padding-bottom: 20px;
+            background-color: var(--primary-color);
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        .services-grid, .restaurant-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            justify-content: center;
+            padding: 10px;
+        }
+        .service, .restaurant-item {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 3.5vw;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service:hover, .restaurant-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 122, 255, 0.8);
+        }
+        .service i {
+            font-size: 30px;
+            margin-bottom: 10px;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .restaurant-item img {
+            width: 100%;
+            height: 90px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        .popup {
+            position: fixed;
+            bottom: -100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 400px;
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.2);
+            transition: bottom 0.4s ease-in-out;
+            z-index: 2000;
+            overflow-y: auto;
+            max-height: 60vh;
+        }
+        .popup.active {
+            bottom: 10px;
+        }
+        .popup h2 {
+            font-size: 4vw;
+            margin-bottom: 10px;
+        }
+        .popup p {
+            font-size: 3.5vw;
+            margin-top: 10px;
+        }
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .contact-info div {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 10px;
+            border-radius: 10px;
+            width: 80%;
+            font-size: 3.5vw;
+            font-weight: bold;
+        }
+        .close-btn {
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            padding: 8px 15px;
+            font-size: 3.5vw;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .order-btn {
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            padding: 10px 20px;
+            font-size: 4vw;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .food-image {
+            width: 100%;
+            height: 150px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            background-color: white;
+            padding: 10px;
+            border-radius: 15px;
+            position: fixed;
+            bottom: 10px;
+            width: 90%;
+            max-width: 400px;
+            z-index: 1000;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .navbar a {
+            text-decoration: none;
+            color: #007AFF;
+            font-weight: bold;
+            padding: 10px 3vw;
+            border-radius: 10px;
+            transition: 0.3s;
+            font-size: 4vw;
+            text-shadow: 0 0 5px rgba(0, 122, 255, 0.8);
+        }
+        .navbar a:hover {
+            background-color: #007AFF;
+            color: white;
+            box-shadow: 0 0 10px rgba(0, 122, 255, 0.8);
+        }
+        @media (max-width: 600px) {
+            .container {
+                width: 95%;
+                max-width: 95%;
+            }
+            .header {
+                font-size: 6vw;
+                padding: 10px;
+                width: 95%;
+                max-width: 95%;
+            }
+            .content h2, .rooms-section h2 {
+                font-size: 6vw;
+            }
+            .content p {
+                font-size: 4vw;
+            }
+            .navbar {
+                width: 95%;
+                max-width: 95%;
+            }
+            .navbar a {
+                font-size: 4vw;
+                padding: 8px 2vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">Old Tashkent Hotel & SPA</header>
+        <div class="tab-container">
+            <div class="tab active" onclick="showTab('services')">SERVICES</div>
+            <div class="tab" onclick="showTab('restaurant')">RESTAURANT</div>
+        </div>
+        <main class="content-container">
+            <section id="services" class="services-grid">
+            <div class="service" onclick="openPopup('WAKE-UP CALL', '@oldtashkenthhotel', '+998978795777', '#100')">
+                <i class="fas fa-bed"></i> WAKE-UP CALL
+            </div>
+            <div class="service" onclick="openPopup('TAXI BOOKING', '@oldtashkenthhotel', '+998971234567', '#100')">
+                <i class="fas fa-taxi"></i> TAXI BOOKING
+            </div>
+            <div class="service" onclick="openPopup('IRONING SERVICE', '@oldtashkenthhotel', '+998971234567', '#100')">
+                <i class="fas fa-tshirt"></i> IRONING SERVICE
+            </div>
+            <div class="service" onclick="openPopup('CITY TOUR', '@oldtashkenthhotel', '+998971234567', '#100')">
+                <i class="fas fa-bus"></i> CITY TOUR
+            </div>
+            <div class="service" onclick="openPopup('LAUNDRY SERVICE', '@oldtashkenthhotel', '+998971234567', '#100')">
+                <i class="fas fa-bath"></i> LAUNDRY SERVICE
+            </div>
+            <div class="service" onclick="openWifiPopup()">
+                <i class="fas fa-wifi"></i> WI-FI
+            </div>
+            <div class="service" onclick="openPopup('ROOM CLEANING', '@oldtashkenthhotel', '+998971234567', '#100')">
+                <i class="fas fa-broom"></i> ROOM CLEANING
+            </div>
+            <div class="service" onclick="openPopup('LUGGAGE ASSISTANCE', '@oldtashkenthhotel', '+998971234567', '#100')">
+                <i class="fas fa-suitcase-rolling"></i> LUGGAGE ASSISTANCE
+            </div>
+            <div class="service" onclick="openPopup('AIRPORT TRANSFER', '@oldtashkenthhotel', '+998971234567', '#100')">
+                <i class="fas fa-plane"></i> AIRPORT TRANSFER
+            </div>
+            <div class="service" onclick="openPopup('RESTAURANT RESERVATION', '@oldtashkenthhotel', '+998971234567', '#100')">
+                <i class="fas fa-utensils"></i> RESTAURANT RESERVATION
+            </div>
+            <div class="service" onclick="openPopup('SPA BOOKING', '@oldtashkenthotel', '+998971234567', '#100')">
+                <i class="fas fa-spa"></i> SPA BOOKING
+            </div>
+            <div class="service" onclick="openPopup('CAR RENTAL', '@oldtashkenthotel', '+998971234567', '#100')">
+                <i class="fas fa-car"></i> CAR RENTAL
+            </div>
+            <div class="service" onclick="openPopup('CONFERENCE ROOM BOOKING', '@oldtashkenthotel', '+998971234567', '#100')">
+                <i class="fas fa-chalkboard-teacher"></i> CONFERENCE ROOM BOOKING
+            </div>
+            <div class="service" onclick="openPopup('MEDICAL ASSISTANCE', '@oldtashkenthotel', '+998971234567', '#100')">
+                <i class="fas fa-briefcase-medical"></i> MEDICAL ASSISTANCE
+            </div>
+        </section>
+        <section id="restaurant" class="restaurant-grid" style="display: none;">
+            <!-- NATIONAL FOODS -->
+            <h3 style="grid-column: span 2; color: white; font-size: 4vw;">NATIONAL FOODS</h3>
+            <div class="restaurant-item" onclick="openRestaurantPopup('PALOV', 'Traditional Uzbek rice dish.', '250.000', 'palov.jpg')">
+                <img src="palov.jpg" alt="Palov"> PALOV
+            </div>
+            <div class="restaurant-item" onclick="openRestaurantPopup('SOMSA', 'Baked pastry with meat filling.', '80.000', 'somsa.jpg')">
+                <img src="somsa.jpg" alt="Somsa"> SOMSA
+            </div>
+            <div class="restaurant-item" onclick="openRestaurantPopup('SHURPA', 'Hearty Uzbek soup with meat and vegetables.', '150.000', 'shurpa.jpg')">
+                <img src="shurpa.jpg" alt="Shurpa"> SHURPA
+            </div>
+            <div class="restaurant-item" onclick="openRestaurantPopup('NARIN', 'Cold noodle dish with horse meat.', '200.000', 'narin.jpg')">
+                <img src="narin.jpg" alt="Narin"> NARIN
+            </div>
+            <div class="restaurant-item" onclick="openRestaurantPopup('LAGMAN', 'Hand-pulled noodle soup.', '180.000', 'lagman.jpg')">
+                <img src="lagman.jpg" alt="Lagman"> LAGMAN
+            </div>
+            <div class="restaurant-item" onclick="openRestaurantPopup('MASTAVA', 'Rice soup with vegetables and meat.', '140.000', 'mastava.jpg')">
+                <img src="mastava.jpg" alt="Mastava"> MASTAVA
+            </div>
+            <div class="restaurant-item" onclick="openRestaurantPopup('DOLMA', 'Grape leaves stuffed with rice and meat.', '170.000', 'dolma.jpg')">
+                <img src="dolma.jpg" alt="Dolma"> DOLMA
+            </div>
+            <div class="restaurant-item" onclick="openRestaurantPopup('KAZAN KABOB', 'Lamb slow-cooked in a kazan.', '260.000', 'kazan-kabob.jpg')">
+                <img src="kazan-kabob.jpg" alt="Kazan Kabob"> KAZAN KABOB
+            </div>
+            <div class="restaurant-item" onclick="openRestaurantPopup('UZBEK BREAD', 'Traditional Uzbek bread (Non).', '50.000', 'bread.jpg')">
+                <img src="bread.jpg" alt="Bread"> UZBEK BREAD
+            </div>
+            <div class="restaurant-item" onclick="openRestaurantPopup('CHUCHVARA', 'Small Uzbek dumplings with meat.', '160.000', 'chuchvara.jpg')">
+                <img src="chuchvara.jpg" alt="Chuchvara"> CHUCHVARA
+            </div>
+
+            <!-- FAST FOOD -->
+            <h3 style="grid-column: span 2; color: white; font-size: 4vw;">FAST FOOD</h3>
+            <div class="restaurant-item" onclick="openRestaurantPopup('CHEESEBURGER', 'Classic beef burger with cheese.', '90.000', 'cheeseburger.jpg')">
+                <img src="cheeseburger.jpg" alt="Cheeseburger"> CHEESEBURGER
+            </div>
+            <div class="restaurant-item" onclick="openRestaurantPopup('FRIED CHICKEN', 'Crispy fried chicken.', '100.000', 'fried-chicken.jpg')">
+                <img src="fried-chicken.jpg" alt="Fried Chicken"> FRIED CHICKEN
+            </div>
+            <div class="restaurant-item" onclick="openRestaurantPopup('SHAWARMA', 'Grilled meat wrapped in pita bread.', '120.000', 'shawarma.jpg')">
+                <img src="shawarma.jpg" alt="Shawarma"> SHAWARMA
+            </div>
+            <div class="restaurant-item" onclick="openRestaurantPopup('HOT DOG', 'Sausage in a bun.', '70.000', 'hotdog.jpg')">
+                <img src="hotdog.jpg" alt="Hot Dog"> HOT DOG
+            </div>
+            <div class="restaurant-item" onclick="openRestaurantPopup('FRENCH FRIES', 'Crispy golden fries.', '60.000', 'fries.jpg')">
+                <img src="fries.jpg" alt="Fries"> FRENCH FRIES
+            </div>
+
+            <!-- SALADS -->
+            <h3 style="grid-column: span 2; color: white; font-size: 4vw;">SALADS</h3>
+            <div class="restaurant-item" onclick="openRestaurantPopup('GREEK SALAD', 'Fresh Greek-style salad.', '85.000', 'greek-salad.jpg')">
+                <img src="greek-salad.jpg" alt="Greek Salad"> GREEK SALAD
+            </div>
+            <div class="restaurant-item" onclick="openRestaurantPopup('CAESAR SALAD', 'Classic chicken caesar salad.', '95.000', 'caesar-salad.jpg')">
+                <img src="caesar-salad.jpg" alt="Caesar Salad"> CAESAR SALAD
+            </div>
+            <div class="restaurant-item" onclick="openRestaurantPopup('VINAIGRETTE', 'Beet-based Russian salad.', '80.000', 'vinaigrette.jpg')">
+                <img src="vinaigrette.jpg" alt="Vinaigrette"> VINAIGRETTE
+            </div>
+            <div class="restaurant-item" onclick="openRestaurantPopup('UZBEK SALAD', 'Fresh tomatoes, cucumbers, and onions.', '70.000', 'uzbek-salad.jpg')">
+                <img src="uzbek-salad.jpg" alt="Uzbek Salad"> UZBEK SALAD
+            </div>
+            <div class="restaurant-item" onclick="openRestaurantPopup('CAPRESE', 'Mozzarella, tomatoes, and basil.', '110.000', 'caprese.jpg')">
+                <img src="caprese.jpg" alt="Caprese"> CAPRESE
+            </div>
+            <div class="restaurant-item" onclick="openRestaurantPopup('TUNA SALAD', 'Fresh tuna with greens.', '120.000', 'tuna-salad.jpg')">
+                <img src="tuna-salad.jpg" alt="Tuna Salad"> TUNA SALAD
+            </div>
+
+            <!-- DRINKS -->
+            <h3 style="grid-column: span 2; color: white; font-size: 4vw;">DRINKS</h3>
+            <div class="restaurant-item" onclick="openRestaurantPopup('TEA', 'Uzbek green and black tea.', '20.000', 'tea.jpg')">
+                <img src="tea.jpg" alt="Tea"> TEA
+            </div>
+            <div class="restaurant-item" onclick="openRestaurantPopup('COFFEE', 'Espresso, cappuccino, latte.', '30.000', 'coffee.jpg')">
+                <img src="coffee.jpg" alt="Coffee"> COFFEE
+            </div>
+            <div class="restaurant-item" onclick="openRestaurantPopup('COLA', 'Coca-Cola soft drink.', '25.000', 'cola.jpg')">
+                <img src="cola.jpg" alt="Cola"> COLA
+            </div>
+            <div class="restaurant-item" onclick="openRestaurantPopup('JUICE', 'Fresh fruit juice.', '40.000', 'juice.jpg')">
+                <img src="juice.jpg" alt="Juice"> JUICE
+            </div>
+            <div class="restaurant-item" onclick="openRestaurantPopup('MILKSHAKE', 'Vanilla, chocolate, or strawberry.', '50.000', 'milkshake.jpg')">
+                <img src="milkshake.jpg" alt="Milkshake"> MILKSHAKE
+            </div>
+            <div class="restaurant-item" onclick="openRestaurantPopup('MOJITO', 'Refreshing lime and mint cocktail.', '45.000', 'mojito.jpg')">
+                <img src="mojito.jpg" alt="Mojito"> MOJITO
+            </div>
+            <div class="restaurant-item" onclick="openRestaurantPopup('LEMONADE', 'Freshly made lemonade.', '35.000', 'lemonade.jpg')">
+                <img src="lemonade.jpg" alt="Lemonade"> LEMONADE
+            </div>
+            <div class="restaurant-item" onclick="openRestaurantPopup('HOT CHOCOLATE', 'Rich and creamy hot chocolate.', '55.000', 'hot-chocolate.jpg')">
+                <img src="hot-chocolate.jpg" alt="Hot Chocolate"> HOT CHOCOLATE
+            </div>
+            <div class="restaurant-item" onclick="openRestaurantPopup('ICED TEA', 'Cold brewed iced tea with lemon.', '30.000', 'iced-tea.jpg')">
+                <img src="iced-tea.jpg" alt="Iced Tea"> ICED TEA
+            </div>
+            <div class="restaurant-item" onclick="openRestaurantPopup('ENERGY DRINK', 'Boost your energy instantly.', '60.000', 'energy-drink.jpg')">
+                <img src="energy-drink.jpg" alt="Energy Drink"> ENERGY DRINK
+            </div>
+        </section>
+
+        </main>
+        <footer class="navbar">
+            <a href="main.html">ABOUT</a>
+            <a href="services.html">SERVICES</a>
+<!--            <a href="bookus.html">BOOK US</a>-->
+            <a href="advice.html">ADVICES</a>
+        </footer>
+        <div class="popup" id="popup">
+            <h2 id="popup-title">Service Name</h2>
+            <div class="contact-info">
+                <div><i class="fab fa-telegram"></i> <span id="contact1"></span></div>
+                <div><i class="fab fa-whatsapp"></i> <span id="contact2"></span></div>
+                <div><i class="fas fa-phone"></i> <span id="contact3"></span></div>
+            </div>
+            <p>You can write or call with this kind of options. Soon, we will update our program for your comfort...</p>
+            <button class="close-btn" onclick="closePopup()">Close</button>
+        </div>
+        <div class="popup" id="wifi-popup">
+            <h2>WI-FI</h2>
+            <p>PASSWORD: <strong>SOMETHING</strong></p>
+            <div class="qr-code">
+                <img src="img_5.png" alt="QR Code">
+            </div>
+            <button class="close-btn" onclick="closeWifiPopup()">Close</button>
+        </div>
+        <div class="popup" id="restaurant-popup">
+            <h2 id="restaurant-title">PALOV</h2>
+            <img id="restaurant-image" class="food-image" src="img_2.png" alt="Food Image">
+            <p id="restaurant-description">Plov is a dish of oriental cuisine, the basis of which is boiled rice. A distinctive feature of plov is its friability, achieved by following the technology of rice preparation and adding animal or vegetable fat to the plov, which prevents the grains from sticking together.</p>
+            <p id="restaurant-price">PRICE: <strong>250.000</strong></p>
+            <button class="order-btn" onclick="orderFood()">ORDER</button>
+            <button class="close-btn" onclick="closeRestaurantPopup()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            document.getElementById('services').style.display = tabName === 'services' ? 'grid' : 'none';
+            document.getElementById('restaurant').style.display = tabName === 'restaurant' ? 'grid' : 'none';
+        }
+
+        function openPopup(serviceName, contact1, contact2, contact3) {
+            document.getElementById('popup-title').innerText = serviceName;
+            document.getElementById('contact1').innerHTML = `<a href="https://t.me/oldtashkenthotel" target="_blank" style="color: white; text-decoration: none; font-weight: bold;">@OldTashkentHotel</a>`;
+            document.getElementById('contact2').innerHTML = `<a href="https://wa.me/qr/6PC2FUU2MUCZM1" target="_blank" style="color: white; text-decoration: none; font-weight: bold;">998978795777</a>`;
+            document.getElementById('contact3').innerText = contact3;
+            document.getElementById('popup').classList.add('active');
+        }
+
+        function closePopup() {
+            document.getElementById('popup').classList.remove('active');
+        }
+
+        function openWifiPopup() {
+            document.getElementById('wifi-popup').classList.add('active');
+        }
+
+        function closeWifiPopup() {
+            document.getElementById('wifi-popup').classList.remove('active');
+        }
+
+        function openRestaurantPopup(title, description, price, imageSrc) {
+            document.getElementById('restaurant-title').innerText = title;
+            document.getElementById('restaurant-description').innerText = description;
+            document.getElementById('restaurant-price').innerText = `PRICE: ${price}`;
+            document.getElementById('restaurant-image').src = imageSrc;
+            document.getElementById('restaurant-popup').classList.add('active');
+        }
+
+        function closeRestaurantPopup() {
+            document.getElementById('restaurant-popup').classList.remove('active');
+        }
+
+        function orderFood() {
+            alert("Call #100 to place your order.");
+        }
+    </script>
+</body>
+</html>
