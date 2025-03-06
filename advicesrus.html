@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  />
+  <title>Advice - Old Tashkent Hotel & SPA</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #007aff; /* Solid background color */
+      color: white;
+      text-align: center;
+      overflow: hidden; /* Body doesn't scroll; .main-content does */
+      position: relative;
+      width: 100%;
+      height: 100vh;
+    }
+    /* HEADER (fixed at top) */
+    .header {
+      position: fixed;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 400px;
+      background-color: white;
+      color: #007aff;
+      font-weight: bold;
+      font-size: 5vw;
+      padding: 12px;
+      border-radius: 15px;
+      text-align: center;
+      z-index: 1000;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* MAIN CONTENT (scrollable) */
+    .main-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh; /* Full viewport height */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center; /* Center vertically and horizontally */
+      z-index: 999;
+    }
+
+    /* "COMING SOON" in big letters */
+    .coming-soon {
+      font-size: 12vw; /* Large text */
+      font-weight: bold;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+      animation: glow 2s infinite alternate; /* Add a glowing effect */
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.8);
+      }
+      to {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.8);
+      }
+    }
+
+    /* Smaller text near bottom (but still inside .main-content) */
+    .update-message {
+      font-size: 4vw;
+      line-height: 1.3;
+      margin-top: 20px; /* Space between "COMING SOON" and this message */
+      padding: 0 10px;
+    }
+
+    /* NAVBAR (fixed at bottom) */
+    .navbar {
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      justify-content: space-around;
+      background-color: white;
+      padding: 10px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 400px;
+      z-index: 1000;
+      box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .navbar a {
+      text-decoration: none;
+      color: #007aff;
+      font-weight: bold;
+      padding: 10px 3vw;
+      border-radius: 10px;
+      transition: 0.3s;
+      font-size: 4vw;
+      text-shadow: 0 0 5px rgba(0, 122, 255, 0.8);
+    }
+    .navbar a:hover {
+      background-color: #007aff;
+      color: white;
+      box-shadow: 0 0 10px rgba(0, 122, 255, 0.8);
+    }
+
+    /* RESPONSIVE ADJUSTMENTS */
+    @media (max-width: 600px) {
+      .header {
+        font-size: 6vw;
+        padding: 10px;
+      }
+      .navbar {
+        width: 95%;
+        max-width: 95%;
+      }
+      .navbar a {
+        font-size: 4vw;
+        padding: 8px 2vw;
+      }
+      .coming-soon {
+        font-size: 15vw; /* Even larger on smaller screens */
+      }
+      .update-message {
+        font-size: 5vw;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <div class="header">Советы</div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+    <!-- Instead of map & sections, show these messages -->
+    <div class="coming-soon">СКОРО...</div>
+    <div class="update-message">
+      Мы думаем, что это обновление порадует вас, просто подождите!
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <a href="mainrus.html.html">О НАС</a>
+      <a href="SERVICESRUS.html">Услуги</a>
+      <a href="advicesrus.html.html">Советы</a>
+       <a href="rulesrus.html.html">Правила</a>
+      <a href="main.html" style="color: red">ENG</a>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Rules - Old Tashkent Hotel & SPA</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+  <!-- Font Awesome for icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #007aff;
+      color: white;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .container {
+      width: 90%;
+      max-width: 400px;
+      height: 95vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    /* HEADER */
+    .header {
+      background-color: white;
+      color: #007aff;
+      font-weight: bold;
+      font-size: 5vw;
+      padding: 12px;
+      border-radius: 15px;
+      text-align: center;
+      position: fixed;
+      top: 10px;
+      width: 90%;
+      max-width: 400px;
+      z-index: 1000;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    /* MAIN CONTENT (scrollable) */
+    .content-container {
+      flex: 1;
+      overflow-y: auto;
+      background-color: #007aff;
+      border-radius: 15px;
+      padding-top: 80px; /* space below header */
+      padding-bottom: 80px; /* space above navbar */
+    }
+    .rules-section {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px; /* space between each rule box */
+    }
+    /* Each rule as a red box with an icon + text */
+    .rule-box {
+      background-color: #d80000; /* red background */
+      color: white;
+      border-radius: 10px;
+      padding: 10px;
+      font-size: 3.5vw;
+      font-weight: bold;
+      display: flex;
+      align-items: flex-start; /* icon & text top-aligned */
+      gap: 10px; /* space between icon & text */
+    }
+    .rule-box i {
+      margin-top: 3px; /* small offset so icon aligns better with text */
+      font-size: 4vw;  /* icon size slightly bigger than text */
+    }
+    /* Last line (no red box) */
+    .last-line {
+      font-size: 3.5vw;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-around;
+      background-color: white;
+      padding: 10px;
+      border-radius: 15px;
+      position: fixed;
+      bottom: 10px;
+      width: 90%;
+      max-width: 400px;
+      z-index: 1000;
+      box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .navbar a {
+      text-decoration: none;
+      color: #007aff;
+      font-weight: bold;
+      padding: 10px 3vw;
+      border-radius: 10px;
+      transition: 0.3s;
+      font-size: 4vw;
+      text-shadow: 0 0 5px rgba(0, 122, 255, 0.8);
+    }
+    .navbar a:hover {
+      background-color: #007aff;
+      color: white;
+      box-shadow: 0 0 10px rgba(0, 122, 255, 0.8);
+    }
+    @media (max-width: 600px) {
+      .container {
+        width: 95%;
+        max-width: 95%;
+      }
+      .header {
+        font-size: 6vw;
+        padding: 10px;
+        width: 95%;
+        max-width: 95%;
+      }
+      .rule-box {
+        font-size: 4vw;
+      }
+      .rule-box i {
+        font-size: 5vw;
+      }
+      .last-line {
+        font-size: 4vw;
+      }
+      .navbar {
+        width: 95%;
+        max-width: 95%;
+      }
+      .navbar a {
+        font-size: 4vw;
+        padding: 8px 2vw;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- HEADER -->
+    <div class="header">Old Tashkent Hotel & SPA</div>
+
+    <!-- SCROLLABLE CONTENT FOR RULES -->
+    <div class="content-container">
+      <div class="rules-section">
+        <!-- 1) Rule Box -->
+        <div class="rule-box">
+          <i class="fas fa-exclamation-circle"></i>
+          <p style="margin: 0;">
+            Since our hotel is a family-oriented hotel, you cannot enter here
+            without a marriage certificate. This rule only applies to citizens
+            of Uzbekistan. One more thing I should mention: if one partner is
+            an Uzbek citizen and the other is a foreign citizen, we also
+            cannot allow them to stay.
+          </p>
+        </div>
+
+        <!-- 2) Rule Box -->
+        <div class="rule-box">
+          <i class="fas fa-exclamation-triangle"></i>
+          <p style="margin: 0;">
+            After 11:00 PM, please avoid making noise. Remember that other
+            guests are also resting.
+          </p>
+        </div>
+
+        <!-- 3) Rule Box -->
+        <div class="rule-box">
+          <i class="fas fa-ban"></i>
+          <p style="margin: 0;">
+            Smoking tobacco products in the room is prohibited. Out of respect
+            for the next guest, we kindly ask you not to smoke in the room.
+            We have fines for this!
+          </p>
+        </div>
+
+        <!-- 4) Rule Box -->
+        <div class="rule-box">
+          <i class="fas fa-key"></i>
+          <p style="margin: 0;">
+            Please keep the room key card safe and do not lose it. Otherwise,
+            you will be charged a $10 penalty.
+          </p>
+        </div>
+
+        <!-- 5) Rule Box -->
+        <div class="rule-box">
+          <i class="fas fa-dolly"></i>
+          <p style="margin: 0;">
+            Nothing in the room is for sale. Please do not remove items you like
+            from the room and put yourself and us in an awkward situation!
+          </p>
+        </div>
+
+        <!-- Last line (no red box, no icon) -->
+        <p class="last-line">
+          Respectfully, the Old Tashkent Hotel & Spa Team.
+        </p>
+      </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+      <a href="main.html">ABOUT</a>
+      <a href="services.html">SERVICES</a>
+      <a href="advice.html">ADVICES</a>
+       <a href="rules.html">RULES</a>
+      <a href="mainrus.html" style="color: red">RUS</a>
+    </div>
+  </div>
+
+</body>
+</html>

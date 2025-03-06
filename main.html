@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Old Tashkent Hotel & SPA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #007AFF;
+      color: white;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .container {
+      width: 90%;
+      max-width: 400px;
+      height: 95vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      animation: fadeIn 1s ease forwards;
+    }
+    .header {
+      background-color: white;
+      color: #007AFF;
+      font-weight: bold;
+      font-size: 5vw;
+      padding: 12px;
+      border-radius: 15px;
+      text-align: center;
+      position: fixed;
+      top: 10px;
+      width: 90%;
+      max-width: 400px;
+      z-index: 1000;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transform: translateY(-30px);
+      animation: slideDown 0.8s ease forwards;
+      animation-delay: 0.3s;
+    }
+    .language-switcher {
+        position: fixed;
+        top: 70px;
+        right: 20px;
+        z-index: 1001;
+        display: flex;
+        gap: 5px;
+    }
+
+    .language-switcher button {
+        background: white;
+        color: #007AFF;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    .content-container {
+      flex: 1;
+      overflow-y: auto;
+      background-color: #007AFF;
+      border-radius: 15px;
+      padding-top: 70px; /* Adjusted for header */
+      padding-bottom: 80px; /* Adjusted for navbar */
+      animation: fadeUp 1s ease forwards;
+      animation-delay: 0.8s;
+    }
+    .content, .rooms-section {
+      padding: 15px;
+      text-align: center;
+    }
+    .content img {
+      width: 100%;
+      border-radius: 15px;
+      border: 5px solid white;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .content img:hover {
+      transform: scale(1.05);
+    }
+    .content h2, .rooms-section h2 {
+      color: white;
+      font-size: 5vw;
+      margin-bottom: 10px;
+    }
+    .content p, .room-category {
+      font-size: 3.5vw;
+      text-align: left;
+      line-height: 1.4;
+      color: white;
+      font-weight: bold;
+    }
+    .rooms-section {
+      margin-top: 10px;
+    }
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      justify-content: center;
+    }
+    .room img {
+      width: 100%;
+      height: 150px;
+      border-radius: 10px;
+      object-fit: cover;
+      cursor: pointer;
+      transition: transform 0.3s ease, border-radius 0.3s ease;
+    }
+    .room img.zoomed {
+      transform: scale(1.5);
+      border-radius: 0;
+      z-index: 1001;
+      position: relative;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-around;
+      background-color: white;
+      padding: 10px;
+      border-radius: 15px;
+      position: fixed;
+      bottom: 10px;
+      width: 90%;
+      max-width: 400px;
+      z-index: 1000;
+      box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .navbar a {
+      text-decoration: none;
+      color: #007AFF;
+      font-weight: bold;
+      padding: 10px 3vw;
+      border-radius: 10px;
+      transition: 0.3s;
+      font-size: 4vw;
+      text-shadow: 0 0 5px rgba(0, 122, 255, 0.8);
+    }
+    .navbar a:hover {
+      background-color: #007AFF;
+      color: white;
+      box-shadow: 0 0 10px rgba(0, 122, 255, 0.8);
+    }
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    .overlay img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+    }
+    @media (max-width: 600px) {
+      .container {
+        width: 95%;
+        max-width: 95%;
+      }
+      .header {
+        font-size: 6vw;
+        padding: 10px;
+        width: 95%;
+        max-width: 95%;
+      }
+      .content h2, .rooms-section h2 {
+        font-size: 6vw;
+      }
+      .content p {
+        font-size: 4vw;
+      }
+      .room-category {
+        font-size: 4.5vw;
+      }
+      .navbar {
+        width: 95%;
+        max-width: 95%;
+      }
+      .navbar a {
+        font-size: 4vw;
+        padding: 8px 2vw;
+      }
+    }
+    /* KEYFRAMES */
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    @keyframes slideDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes fadeUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">Old Tashkent Hotel & SPA</div>
+    <div class="content-container">
+      <div class="content">
+        <img src="img.png" alt="Hotel Image">
+        <h2>ABOUT US</h2>
+        <p>
+          OLD TASHKENT Hotel & Spa features a seasonal outdoor swimming pool, garden, a shared lounge, and terrace in Tashkent.
+          The property has a bar, as well as a restaurant serving European cuisine. The accommodation provides a 24-hour front desk,
+          airport transfers, room service, and free WiFi throughout the property.
+        </p>
+        <p>
+          Guest rooms are equipped with air conditioning, a flat-screen TV with satellite channels, a fridge, a kettle, a shower, free toiletries,
+          and a desk. Each room is fitted with a private bathroom with a bath, a hairdryer, and slippers. All guest rooms include a wardrobe.
+        </p>
+      </div>
+      <div class="rooms-section">
+        <h2>Rooms</h2>
+        <div class="room-category">DOUBLE AND TWIN ROOMS</div>
+        <div class="rooms-grid">
+          <div class="room"><img src="imgroom/img_1.png" alt="Room Image" onclick="zoomImage(this)"></div>
+          <div class="room"><img src="imgroom/img_2.png" alt="Room Image" onclick="zoomImage(this)"></div>
+          <div class="room"><img src="imgroom/img_3.png" alt="Room Image" onclick="zoomImage(this)"></div>
+          <div class="room"><img src="imgroom/img_2.png" alt="Room Image" onclick="zoomImage(this)"></div>
+        </div>
+        <br>
+        <div class="room-category">TRIPLE ROOMS</div>
+        <div class="rooms-grid">
+          <div class="room"><img src="imgroom/img_4.png" alt="Room Image" onclick="zoomImage(this)"></div>
+          <div class="room"><img src="imgroom/img_2.png" alt="Room Image" onclick="zoomImage(this)"></div>
+        </div>
+        <br>
+        <div class="room-category">SUITE & DELUXE ROOMS</div>
+        <div class="rooms-grid">
+          <div class="room"><img src="imgroom/img_6.png" alt="Room Image" onclick="zoomImage(this)"></div>
+          <div class="room"><img src="imgroom/img_7.png" alt="Room Image" onclick="zoomImage(this)"></div>
+          <div class="room"><img src="imgroom/img_8.png" alt="Room Image" onclick="zoomImage(this)"></div>
+          <div class="room"><img src="imgroom/img_9.png" alt="Room Image" onclick="zoomImage(this)"></div>
+        </div>
+      </div>
+    </div>
+    <div class="navbar">
+      <a href="main.html">ABOUT</a>
+      <a href="services.html">SERVICES</a>
+      <a href="advice.html">ADVICES</a>
+       <a href="rules.html">RULES</a>
+      <a href="mainrus.html" style="color: red">RUS</a>
+    </div>
+    <div class="overlay" onclick="closeZoom()">
+      <img id="zoomed-img" src="" alt="Zoomed Image">
+    </div>
+  </div>
+
+  <script>
+    function zoomImage(img) {
+      const overlay = document.querySelector('.overlay');
+      const zoomedImg = document.getElementById('zoomed-img');
+      zoomedImg.src = img.src;
+      overlay.style.display = 'flex';
+    }
+    function closeZoom() {
+      const overlay = document.querySelector('.overlay');
+      overlay.style.display = 'none';
+    }
+  </script>
+</body>
+</html>
